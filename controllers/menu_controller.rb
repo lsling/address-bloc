@@ -15,7 +15,8 @@ require_relative '../models/address_book'
      puts "2 - Create an entry"
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
-     puts "5 - Exit"
+     puts "5 - View Entry Number"
+     puts "6 - Exit"
      print "Enter your selection: "
 
      # #3 retrieve user input from the command line using  gets. gets reads the next line from standard input.
@@ -39,6 +40,10 @@ require_relative '../models/address_book'
          read_csv
          main_menu
        when 5
+         system "clear"
+         entry_n_submenu
+         main_menu
+       when 6
          puts "Good-bye!"
          # #8 terminate the program using exit(0). 0 signals the program is exiting without an error
          exit(0)
@@ -88,6 +93,22 @@ require_relative '../models/address_book'
 
    def read_csv
    end
+
+   def entry_n_submenu
+     print "Entry Number: "
+     entry_number = gets.chomp.to_i
+
+     if entry_number < @address_book.entries.count
+       puts @address_book.entries[entry_number]
+       puts "Press enter to return to main menu"
+       gets.chomp
+       system "clear"
+     else
+       puts "#{entry_number} does not exist"
+       entry_n_submenu
+     end
+   end
+
    def entry_submenu(entry)
      # #16 display the submenu options
      puts "n - next entry"
