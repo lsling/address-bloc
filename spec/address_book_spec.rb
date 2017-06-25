@@ -98,7 +98,7 @@ require_relative '../models/address_book'
        entry = book.binary_search("Dan")
        expect(entry).to be_nil
      end
-     
+
      it "searches AddressBook for Bill" do
        book.import_from_csv("entries.csv")
        entry = book.binary_search("Bill")
@@ -137,6 +137,13 @@ require_relative '../models/address_book'
        book.import_from_csv("entries.csv")
        entry = book.binary_search("Billy")
        expect(entry).to be_nil
+     end
+   end
+
+   describe "#annihilate_entries" do
+     it "should delete all entries" do
+       book.annihilate_entries
+       expect(book.entries.size).to eq 0
      end
    end
  end

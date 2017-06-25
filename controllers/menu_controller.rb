@@ -15,7 +15,8 @@ require_relative '../models/address_book'
      puts "2 - Create an entry"
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
-     puts "5 - Exit"
+     puts "5 - Annihilate all entries"
+     puts "6 - Exit"
      print "Enter your selection: "
 
      # #3 retrieve user input from the command line using  gets. gets reads the next line from standard input.
@@ -39,6 +40,10 @@ require_relative '../models/address_book'
          read_csv
          main_menu
        when 5
+         system "clear"
+         annihilate
+         main_menu
+       when 6
          puts "Good-bye!"
          # #8 terminate the program using exit(0). 0 signals the program is exiting without an error
          exit(0)
@@ -205,4 +210,11 @@ require_relative '../models/address_book'
          search_submenu(entry)
      end
    end
+
+   def annihilate
+     address_book.annihilate_entries
+       system "clear"
+       puts "All entries have been deleted"
+   end
+
  end

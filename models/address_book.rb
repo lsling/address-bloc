@@ -30,7 +30,7 @@ require "csv"
        add_entry(row_hash["name"], row_hash["phone_number"], row_hash["email"])
      end
   end
-  
+
   def binary_search(name)
     # #1 we save the index of the leftmost item in the array in a variable named lower, and the index of rightmost item in the array in upper
      lower = 0
@@ -54,5 +54,9 @@ require "csv"
 
      # #5 if we divide and conquer to the point where no match is found, we return nil
      return nil
+  end
+
+  def annihilate_entries
+    entries.clear
   end
 end
